@@ -17,6 +17,14 @@ jobs:
 
       - run: go build -ldflags="-s -w" -v -o paimonmoe-link-${{github.ref_name}}.exe .
 
+      - name: Run UPX
+        uses: crazy-max/ghaction-upx@v2
+        with:
+          version: latest
+          files: |
+            paimonmoe-link-${{github.ref_name}}.exe
+          args: --best
+
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
