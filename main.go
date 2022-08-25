@@ -34,7 +34,7 @@ func startProxy() {
 				color.White(req.URL.String())
 
 				clipboard.WriteAll(req.URL.String())
-				color.Green("Copied the link to your clipboard, paste it to Paimon.moe!")
+				color.HiGreen("Copied the link to your clipboard, paste it to Paimon.moe!")
 
 				found = true
 
@@ -50,7 +50,7 @@ func startProxy() {
 		})
 
 	go func() {
-		color.Yellow("Please open the Wish History on the game now!")
+		color.HiCyan("Please open the Wish History on the game now!")
 		if err := server.ListenAndServe(); err != nil {
 			if !errors.Is(err, http.ErrServerClosed) {
 				log.Panicln("proxy server", err)
