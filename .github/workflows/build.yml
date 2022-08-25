@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    runs-on: windows-2019
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+
+      - run: go build -ldflags="-s -w" -v -o paimonmoe-link-${{github.ref_name}}.exe .
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: paimonmoe-link-${{github.ref_name}}.exe
