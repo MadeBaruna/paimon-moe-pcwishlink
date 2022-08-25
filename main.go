@@ -50,7 +50,7 @@ func startProxy() {
 		})
 
 	go func() {
-		color.Cyan("Please open your the Wish History on the game now!")
+		color.Yellow("Please open the Wish History on the game now!")
 		if err := server.ListenAndServe(); err != nil {
 			if !errors.Is(err, http.ErrServerClosed) {
 				log.Panicln("proxy server", err)
